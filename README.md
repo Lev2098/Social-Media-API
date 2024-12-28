@@ -218,6 +218,93 @@ DELETE {{host}}/api/action/comments/4/
 - `Accept: application/json`
 - `Authorization: Bearer {{access_token}}`
 
+## User Follow System
+---
+
+### 1. Follow a User
+**Endpoint:**
+```http
+POST {{host}}/api/users/<user_id>/follow/
+```
+
+**Headers:**
+- `Accept: application/json`
+- `Authorization: Bearer {{access_token}}`
+- `Content-Type: application/json`
+
+**Body:**
+```json
+{}
+```
+
+---
+
+### 2. Unfollow a User
+**Endpoint:**
+```http
+POST {{host}}/api/users/<user_id>/unfollow/
+```
+
+**Headers:**
+- `Accept: application/json`
+- `Authorization: Bearer {{access_token}}`
+- `Content-Type: application/json`
+
+**Body:**
+```json
+{}
+```
+
+---
+
+### 3. List Followers of a User
+**Endpoint:**
+```http
+GET {{host}}/api/users/<user_id>/followers/
+```
+
+**Headers:**
+- `Accept: application/json`
+- `Authorization: Bearer {{access_token}}`
+
+---
+
+### 4. List Following Users of a User
+**Endpoint:**
+```http
+GET {{host}}/api/users/<user_id>/following/
+```
+
+**Headers:**
+- `Accept: application/json`
+- `Authorization: Bearer {{access_token}}`
+
+---
+
+## Заміни
+1. `{{host}}` – база вашого API (домен/сервер). Наприклад, `http://localhost:8000` або `https://api.example.com`.
+2. `<user_id>` – `ID` користувача, з яким ви взаємодієте. Наприклад: `/users/5/follow/`.
+3. `{{access_token}}` – ваш актуальний Bearer токен для авторизації.
+
+---
+
+## Приклад використання
+### Follow User
+```http
+POST https://api.example.com/api/users/5/follow/
+Accept: application/json
+Authorization: Bearer abc123tokenxyz
+Content-Type: application/json
+
+{}
+```
+
+### Get Followers
+```http
+GET https://api.example.com/api/users/5/followers/
+Accept: application/json
+Authorization: Bearer abc123tokenxyz
+```
 ---
 
 ## Notes:
