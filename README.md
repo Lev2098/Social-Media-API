@@ -46,6 +46,185 @@ You are tasked with building a RESTful API for a social media platform. The API 
 ## API Documentation:
 - The API should be well-documented with clear instructions on how to use each endpoint.
 - The documentation should include sample API requests and responses for different endpoints.
+---
+
+## User Profiles
+
+### 1. Take all profiles
+**Endpoint:**
+```http
+GET {{host}}/api/user/profiles/
+```
+
+**Headers:**
+- `Accept: application/json`
+- `Authorization: Bearer {{access_token}}`
+
+---
+
+### 2. Take my profile
+**Endpoint:**
+```http
+GET {{host}}/api/user/profiles/?me
+```
+
+**Headers:**
+- `Accept: application/json`
+- `Authorization: Bearer {{access_token}}`
+
+---
+
+### 3. Update my profile
+**Endpoint:**
+```http
+PUT {{host}}/api/user/profiles/1/
+```
+
+**Headers:**
+- `Accept: application/json`
+- `Authorization: Bearer {{access_token}}`
+- `Content-Type: application/json`
+
+**Sample Body:**
+```json
+{
+  "email": "lev2@g.com",
+  "bio": "I am a software developer with a passion for coding!",
+  "profile_picture": null
+}
+```
+
+---
+
+## Posts
+
+### 1. Create a new post
+**Endpoint:**
+```http
+POST {{host}}/api/action/posts/
+```
+
+**Headers:**
+- `Accept: application/json`
+- `Authorization: Bearer {{access_token}}`
+- `Content-Type: application/json`
+
+**Sample Body:**
+```json
+{
+  "content": "This is new post",
+  "media": null
+}
+```
+
+---
+
+### 2. Update a post
+**Endpoint:**
+```http
+PUT {{host}}/api/action/posts/1/
+```
+
+**Headers:**
+- `Accept: application/json`
+- `Authorization: Bearer {{access_token}}`
+- `Content-Type: application/json`
+
+**Sample Body:**
+```json
+{
+  "content": "Updated post content"
+}
+```
+
+---
+
+### 3. Delete a post
+**Endpoint:**
+```http
+DELETE {{host}}/api/action/posts/1/
+```
+
+**Headers:**
+- `Accept: application/json`
+- `Authorization: Bearer {{access_token}}`
+
+---
+
+## Likes
+
+### 1. Add a like to a post
+**Endpoint:**
+```http
+POST {{host}}/api/action/likes/
+```
+
+**Headers:**
+- `Accept: application/json`
+- `Authorization: Bearer {{access_token}}`
+- `Content-Type: application/json`
+
+**Sample Body:**
+```json
+{
+  "post": 1
+}
+```
+
+---
+
+### 2. Delete a like
+**Endpoint:**
+```http
+DELETE {{host}}/api/action/likes/1/
+```
+
+**Headers:**
+- `Accept: application/json`
+- `Authorization: Bearer {{access_token}}`
+
+---
+
+## Comments
+
+### 1. Add a comment to a post
+**Endpoint:**
+```http
+POST {{host}}/api/action/comments/
+```
+
+**Headers:**
+- `Accept: application/json`
+- `Authorization: Bearer {{access_token}}`
+- `Content-Type: application/json`
+
+**Sample Body:**
+```json
+{
+  "post": 1,
+  "content": "This is new comment"
+}
+```
+
+---
+
+### 2. Delete a comment
+**Endpoint:**
+```http
+DELETE {{host}}/api/action/comments/4/
+```
+
+**Headers:**
+- `Accept: application/json`
+- `Authorization: Bearer {{access_token}}`
+
+---
+
+## Notes:
+- Replace `{{access_token}}` with a valid Bearer token.
+- Replace `{{host}}` with the base URL of your API server.
+- Ensure that all IDs (e.g., `1`, `4`) in the examples are replaced with actual IDs from your database.
+- All timestamps should follow the ISO 8601 format (e.g., `2024-12-28T11:15:19.200Z`).
 
 ---
 
