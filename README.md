@@ -46,6 +46,272 @@ You are tasked with building a RESTful API for a social media platform. The API 
 ## API Documentation:
 - The API should be well-documented with clear instructions on how to use each endpoint.
 - The documentation should include sample API requests and responses for different endpoints.
+---
+
+## User Profiles
+
+### 1. Take all profiles
+**Endpoint:**
+```http
+GET {{host}}/api/user/profiles/
+```
+
+**Headers:**
+- `Accept: application/json`
+- `Authorization: Bearer {{access_token}}`
+
+---
+
+### 2. Take my profile
+**Endpoint:**
+```http
+GET {{host}}/api/user/profiles/?me
+```
+
+**Headers:**
+- `Accept: application/json`
+- `Authorization: Bearer {{access_token}}`
+
+---
+
+### 3. Update my profile
+**Endpoint:**
+```http
+PUT {{host}}/api/user/profiles/1/
+```
+
+**Headers:**
+- `Accept: application/json`
+- `Authorization: Bearer {{access_token}}`
+- `Content-Type: application/json`
+
+**Sample Body:**
+```json
+{
+  "email": "lev2@g.com",
+  "bio": "I am a software developer with a passion for coding!",
+  "profile_picture": null
+}
+```
+
+---
+
+## Posts
+
+### 1. Create a new post
+**Endpoint:**
+```http
+POST {{host}}/api/action/posts/
+```
+
+**Headers:**
+- `Accept: application/json`
+- `Authorization: Bearer {{access_token}}`
+- `Content-Type: application/json`
+
+**Sample Body:**
+```json
+{
+  "content": "This is new post",
+  "media": null
+}
+```
+
+---
+
+### 2. Update a post
+**Endpoint:**
+```http
+PUT {{host}}/api/action/posts/1/
+```
+
+**Headers:**
+- `Accept: application/json`
+- `Authorization: Bearer {{access_token}}`
+- `Content-Type: application/json`
+
+**Sample Body:**
+```json
+{
+  "content": "Updated post content"
+}
+```
+
+---
+
+### 3. Delete a post
+**Endpoint:**
+```http
+DELETE {{host}}/api/action/posts/1/
+```
+
+**Headers:**
+- `Accept: application/json`
+- `Authorization: Bearer {{access_token}}`
+
+---
+
+## Likes
+
+### 1. Add a like to a post
+**Endpoint:**
+```http
+POST {{host}}/api/action/likes/
+```
+
+**Headers:**
+- `Accept: application/json`
+- `Authorization: Bearer {{access_token}}`
+- `Content-Type: application/json`
+
+**Sample Body:**
+```json
+{
+  "post": 1
+}
+```
+
+---
+
+### 2. Delete a like
+**Endpoint:**
+```http
+DELETE {{host}}/api/action/likes/1/
+```
+
+**Headers:**
+- `Accept: application/json`
+- `Authorization: Bearer {{access_token}}`
+
+---
+
+## Comments
+
+### 1. Add a comment to a post
+**Endpoint:**
+```http
+POST {{host}}/api/action/comments/
+```
+
+**Headers:**
+- `Accept: application/json`
+- `Authorization: Bearer {{access_token}}`
+- `Content-Type: application/json`
+
+**Sample Body:**
+```json
+{
+  "post": 1,
+  "content": "This is new comment"
+}
+```
+
+---
+
+### 2. Delete a comment
+**Endpoint:**
+```http
+DELETE {{host}}/api/action/comments/4/
+```
+
+**Headers:**
+- `Accept: application/json`
+- `Authorization: Bearer {{access_token}}`
+
+## User Follow System
+---
+
+### 1. Follow a User
+**Endpoint:**
+```http
+POST {{host}}/api/users/<user_id>/follow/
+```
+
+**Headers:**
+- `Accept: application/json`
+- `Authorization: Bearer {{access_token}}`
+- `Content-Type: application/json`
+
+**Body:**
+```json
+{}
+```
+
+---
+
+### 2. Unfollow a User
+**Endpoint:**
+```http
+POST {{host}}/api/users/<user_id>/unfollow/
+```
+
+**Headers:**
+- `Accept: application/json`
+- `Authorization: Bearer {{access_token}}`
+- `Content-Type: application/json`
+
+**Body:**
+```json
+{}
+```
+
+---
+
+### 3. List Followers of a User
+**Endpoint:**
+```http
+GET {{host}}/api/users/<user_id>/followers/
+```
+
+**Headers:**
+- `Accept: application/json`
+- `Authorization: Bearer {{access_token}}`
+
+---
+
+### 4. List Following Users of a User
+**Endpoint:**
+```http
+GET {{host}}/api/users/<user_id>/following/
+```
+
+**Headers:**
+- `Accept: application/json`
+- `Authorization: Bearer {{access_token}}`
+
+---
+
+## Заміни
+1. `{{host}}` – база вашого API (домен/сервер). Наприклад, `http://localhost:8000` або `https://api.example.com`.
+2. `<user_id>` – `ID` користувача, з яким ви взаємодієте. Наприклад: `/users/5/follow/`.
+3. `{{access_token}}` – ваш актуальний Bearer токен для авторизації.
+
+---
+
+## Приклад використання
+### Follow User
+```http
+POST https://api.example.com/api/users/5/follow/
+Accept: application/json
+Authorization: Bearer abc123tokenxyz
+Content-Type: application/json
+
+{}
+```
+
+### Get Followers
+```http
+GET https://api.example.com/api/users/5/followers/
+Accept: application/json
+Authorization: Bearer abc123tokenxyz
+```
+---
+
+## Notes:
+- Replace `{{access_token}}` with a valid Bearer token.
+- Replace `{{host}}` with the base URL of your API server.
+- Ensure that all IDs (e.g., `1`, `4`) in the examples are replaced with actual IDs from your database.
+- All timestamps should follow the ISO 8601 format (e.g., `2024-12-28T11:15:19.200Z`).
 
 ---
 
